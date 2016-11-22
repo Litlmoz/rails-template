@@ -4,7 +4,7 @@ def source_paths
 end
 
 def apply_template!
-  apply "~/gem_template.rb" # define default gems
+  apply "gem_template.rb" # define default gems
   apply "app/assets/assets_template.rb" # import bootstrap js and css
   apply "app/helpers/helper_templates.rb" # date format helper, json serializer
   apply "config/application_template.rb" # config logger, default generators
