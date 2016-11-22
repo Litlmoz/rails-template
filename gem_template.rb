@@ -1,5 +1,6 @@
 remove_file "Gemfile"
-file 'Gemfile', <<-RUBY
+
+file "Gemfile", <<-RUBY
 source 'https://rubygems.org'
 
 ruby '2.3.2'
