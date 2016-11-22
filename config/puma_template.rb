@@ -7,4 +7,4 @@ plugin :tmp_restart
 plugin :heroku
 RUBY
 
-lib "lib/puma/plugin/heroku.rb"
+copy_file "lib/puma/plugin/heroku.rb"
