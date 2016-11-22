@@ -9,6 +9,7 @@ def apply_template!
   apply "app/helpers/helper_templates.rb" # date format helper, json serializer
   apply "config/application_template.rb" # config logger, default generators
   apply "config/puma_template.rb" # config puma server setttings
+  apply "lib/scaffold_template.rb"
   gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
 end
 
