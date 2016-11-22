@@ -17,9 +17,9 @@ apply_template!
 
 after_bundle do
   remove_dir 'test' # remove unused test specs
-  # generate "simple_form:install"
-  # generate "simple_form:install --bootstrap"
-  # generate "rspec:install"
-  # rails_command "db:create"
-  # rails_command "db:migrate"
+  generate "simple_form:install"
+  generate "simple_form:install --bootstrap"
+  generate "rspec:install"
+  rails_command "db:create"
+  rails_command "db:migrate"
 end
