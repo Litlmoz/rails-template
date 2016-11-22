@@ -5,10 +5,10 @@ end
 
 def apply_template!
   apply "gem_template.rb" # define default gems
-  apply "config/application_template.rb" # config logger, default generators
-  apply "config/puma_template.rb" # config puma server setttings
   apply "app/assets/assets_template.rb" # import bootstrap js and css
   apply "app/helpers/helper_templates.rb" # date format helper, json serializer
+  apply "config/application_template.rb" # config logger, default generators
+  apply "config/puma_template.rb" # config puma server setttings
   gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
 end
 
