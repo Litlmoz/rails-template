@@ -20,6 +20,8 @@ after_bundle do
   generate "simple_form:install --bootstrap"
   generate "rspec:install"
   remove_dir "test" # remove unused test specs
+  remove_dir "lib/templates/erb/scaffold"
+  copy_file "lib/templates/erb/scaffold/index.html.erb"
   rails_command "db:create"
   rails_command "db:migrate"
 end
