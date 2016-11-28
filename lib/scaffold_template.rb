@@ -6,4 +6,3 @@ file "app/views/application/_flash.html.erb", <<-CODE
   </div>
 <% end %>
 CODE
-
