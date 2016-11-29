@@ -13,7 +13,6 @@ def apply_template!
   apply "app/assets/assets_template.rb" # import Bootstrap js and css
   apply "app/helpers/helper_templates.rb" # default helper methods
   apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
-  gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
   
   apply "config/application_template.rb" # configure app
   apply "config/puma_template.rb" # config puma server setttings

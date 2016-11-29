@@ -16,6 +16,9 @@ application do <<-RUBY
 RUBY
 end
 
+# Specify Redis port for ActionCable
+gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
+
 # Configure Dev Mailer
 mailer_regex = /config\.action_mailer\.raise_delivery_errors = false\n/
 
