@@ -8,6 +8,7 @@ def apply_template!
   apply "config/puma_template.rb" # config puma server setttings
   apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
   gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
+  template "app.json.tt" # Heroku review app config
 end
 
 apply_template!
