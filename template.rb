@@ -1,7 +1,3 @@
-def source_paths
-  Array(super)
-  [File.expand_path(File.dirname(__FILE__))]
-end
 
 def apply_template!
   template "Gemfile.tt", :force => true # define default gems
@@ -19,11 +15,16 @@ apply_template!
 after_bundle do
   generate "simple_form:install" # initialize SimpleForm
   generate "simple_form:install --bootstrap" # initialize SimpleForm Bootstrap
+
   generate "rspec:install" # install Rspec
+
   remove_dir "test" # remove unused test specs
+
   remove_dir "lib/templates/erb/scaffold" # remove default scaffolds
-  copy_file "lib/templates/erb/scaffold/_form.html.erb" # custom form scaffold
-  copy_file "lib/templates/erb/scaffold/index.html.erb" # custom index scaffold
+  copy_file "lib/templates/erb/scaffold/_form.html.erb" # form defaults
+  copy_file "lib/templates/erb/scaffold/index.html.erb" # index#view defaults
+
+  # initialize Postgres database
   rails_command "db:create"
   rails_command "db:migrate"
 end
