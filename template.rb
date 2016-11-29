@@ -14,10 +14,8 @@ def apply_template!
   apply "app/helpers/helper_templates.rb" # default helper methods
   apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
 
-  apply "config/application_template.rb" # configure app
+  apply "config/app_config_template.rb" # configure App
   apply "config/puma_template.rb" # config puma server setttings
-
-  template "app.json.tt" # Heroku review app config
 
   after_bundle do
     generate "simple_form:install" # initialize SimpleForm

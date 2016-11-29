@@ -36,3 +36,14 @@ insert_into_file "config/environments/development.rb", :after => mailer_regex do
   Rails.application.routes.default_url_options[:host] = 'localhost:5000'
   RUBY
 end
+
+template "app.json.tt" # Heroku review app config
+
+copy_file "example.env", ".env" # Example enviroment variables
+
+insert_into_file ".gitignore", :after => /.byebug_history\n/ do
+  <<-CODE
+# Ignore Enviroment Variable doc
+.env
+  CODE
+end
