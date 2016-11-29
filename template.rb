@@ -4,9 +4,10 @@ def source_paths
 end
 
 def apply_template!
-  apply "app/assets/assets_template.rb" # import bootstrap js and css
-  apply "app/helpers/helper_templates.rb" # date format helper, json serializer
   template "Gemfile.tt", :force => true # define default gems
+
+  apply "app/assets/assets_template.rb" # import Bootstrap js and css
+  apply "app/helpers/helper_templates.rb" # default helper methods
   apply "config/application_template.rb" # config logger, default generators
   apply "config/puma_template.rb" # config puma server setttings
   apply "lib/partials.rb" # partial views
