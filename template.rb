@@ -1,3 +1,6 @@
+require "fileutils"
+require "shellwords"
+
 RAILS_REQUIREMENT = "~> 5.0.0"
 
 def apply_template!
@@ -9,16 +12,14 @@ def apply_template!
 
   apply "app/assets/assets_template.rb" # import Bootstrap js and css
   apply "app/helpers/helper_templates.rb" # default helper methods
-  apply "config/application_template.rb" # config logger, default generators
-  apply "config/puma_template.rb" # config puma server setttings
   apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
   gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
+  
+  apply "config/application_template.rb" # configure app
+  apply "config/puma_template.rb" # config puma server setttings
 
   template "app.json.tt" # Heroku review app config
 end
-
-require "fileutils"
-require "shellwords"
 
 def assert_minimum_rails_version
   requirement = Gem::Requirement.new(RAILS_REQUIREMENT)
