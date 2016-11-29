@@ -2,6 +2,7 @@ RAILS_REQUIREMENT = "~> 5.0.0"
 
 def apply_template!
   assert_minimum_rails_version
+  template "README.md.tt", :force => true # replace default README
   template "Gemfile.tt", :force => true # define default gems
 
   apply "app/assets/assets_template.rb" # import Bootstrap js and css
