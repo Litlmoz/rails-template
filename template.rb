@@ -13,11 +13,28 @@ def apply_template!
   apply "app/assets/assets_template.rb" # import Bootstrap js and css
   apply "app/helpers/helper_templates.rb" # default helper methods
   apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
-  
+
   apply "config/application_template.rb" # configure app
   apply "config/puma_template.rb" # config puma server setttings
 
   template "app.json.tt" # Heroku review app config
+
+  after_bundle do
+    generate "simple_form:install" # initialize SimpleForm
+    generate "simple_form:install --bootstrap" # initialize SimpleForm Bootstrap
+
+    generate "rspec:install" # install Rspec
+
+    remove_dir "test" # remove unused test specs
+
+    remove_dir "lib/templates/erb/scaffold" # remove default scaffolds
+    copy_file "lib/templates/erb/scaffold/_form.html.erb" # form defaults
+    copy_file "lib/templates/erb/scaffold/index.html.erb" # index#view defaults
+
+    # initialize Postgres database
+    rails_command "db:create"
+    rails_command "db:migrate"
+  end
 end
 
 def assert_minimum_rails_version
@@ -49,20 +66,3 @@ def add_template_repository_to_source_path
 end
 
 apply_template!
-
-after_bundle do
-  generate "simple_form:install" # initialize SimpleForm
-  generate "simple_form:install --bootstrap" # initialize SimpleForm Bootstrap
-
-  generate "rspec:install" # install Rspec
-
-  remove_dir "test" # remove unused test specs
-
-  remove_dir "lib/templates/erb/scaffold" # remove default scaffolds
-  copy_file "lib/templates/erb/scaffold/_form.html.erb" # form defaults
-  copy_file "lib/templates/erb/scaffold/index.html.erb" # index#view defaults
-
-  # initialize Postgres database
-  rails_command "db:create"
-  rails_command "db:migrate"
-end
