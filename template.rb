@@ -10,7 +10,7 @@ def apply_template!
   apply "app/helpers/helper_templates.rb" # default helper methods
   apply "config/application_template.rb" # config logger, default generators
   apply "config/puma_template.rb" # config puma server setttings
-  apply "lib/partials.rb" # partial views
+  apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
   gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
 end
 
