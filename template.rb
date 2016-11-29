@@ -25,13 +25,11 @@ def apply_template!
 
     remove_dir "test" # remove unused test specs
 
-    remove_dir "lib/templates/erb/scaffold" # remove default scaffolds
-    copy_file "lib/templates/erb/scaffold/_form.html.erb" # form defaults
+    # remove default scaffolds
+    copy_file "lib/templates/erb/scaffold/_form.html.erb", :force => true
     copy_file "lib/templates/erb/scaffold/index.html.erb" # index#view defaults
 
-    # initialize Postgres database
-    rails_command "db:create"
-    rails_command "db:migrate"
+    copy_file "bin/setup", :force => true #overwrite setup tasks
   end
 end
 
