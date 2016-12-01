@@ -10,6 +10,8 @@ gem 'puma'
 # Use Redis adapter to run Action Cable in production
 gem 'redis'
 
+# Use Font Awesome Rails for Font Awesome icons
+gem 'font-awesome-rails'
 # Use Bootstrap with SCSS
 gem 'bootstrap-sass'
 # Use SCSS for stylesheets
