@@ -1,4 +1,5 @@
 # <%= app_name %>
+# <%= app_description %>
 
 This is a Rails <%= Rails::VERSION::MAJOR %> app.
 

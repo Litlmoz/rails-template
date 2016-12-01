@@ -10,6 +10,7 @@ def apply_template!
   ##### Replace default Gemfile
   template "Gemfile.tt", :force => true
 
+  @description = ask("Please describe App:\n")
   ##### Replace default README
   template "README.md.tt", :force => true
   ##### Config App settings
@@ -47,6 +48,10 @@ def apply_template!
     ##### Customize bin/setup tasks
     copy_file "bin/setup", :force => true #overwrite setup tasks
   end
+end
+
+def app_description
+  @description ||= "Default Rails 5 App description. This description is displayed within README.md and app.json file."
 end
 
 def assert_minimum_rails_version

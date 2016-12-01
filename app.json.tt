@@ -1,6 +1,6 @@
 {
   "name": "<%= app_name %>",
-  "description": "Contact Form",
+  "description": "<%= app_description %>",
   "scripts": {
     "postdeploy": "rake db:migrate; rake db:seed"
   },
