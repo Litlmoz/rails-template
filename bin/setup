@@ -5,6 +5,7 @@ def setup!
     test "ruby -v" => ruby_version
     run  "gem install bundler --no-document --conservative"
     run  "bundle install"
+    run  "bundle binstubs rspec-core"
     run  "bin/rake db:create"
     run  "bin/rake db:migrate"
     run  "bin/rake db:seed"

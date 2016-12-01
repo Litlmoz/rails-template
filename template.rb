@@ -32,7 +32,6 @@ def apply_template!
 
     ##### Install Rspec
     generate "rspec:install"
-    generate "bundle binstubs rspec-core"
 
     ##### Install Devise
     # generate "devise:install"
