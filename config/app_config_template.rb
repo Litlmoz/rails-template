@@ -39,6 +39,19 @@ insert_into_file "config/environments/development.rb", :after => mailer_regex do
   RUBY
 end
 
+##### Add popular file types to the assets pre-compile list
+append_file "config/initializers/assets.rb" do
+  <<-RUBY
+
+# Pre-compile additional assets.
+Rails.application.config.assets.precompile << proc do |path|
+  true if path =~ /\.(eot|svg|ttf|woff|png)\z/
+end
+  RUBY
+end
+
+##### Create Heroku review app config file
+template "app.json.tt"
 
 ##### Create default enviroment variables file
 copy_file "example.env", ".env"
@@ -46,6 +59,7 @@ copy_file "example.env", ".env"
 ##### Ignore .env File
 insert_into_file ".gitignore", :after => /.byebug_history\n/ do
   <<-CODE
+
 # Ignore Enviroment Variable doc
 .env
   CODE

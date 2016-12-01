@@ -38,6 +38,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Access .env file before starting app
   gem 'dotenv-rails'
+  # Setup favicon icons
+  gem 'rails_real_favicon'
 end
 
 group :development do

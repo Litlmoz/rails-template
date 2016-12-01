@@ -22,4 +22,22 @@ CSS
 ##### Add Bootsrap Variables and create custom CSS stylesheet
 file "app/assets/stylesheets/main.scss.erb", <<-CSS
 @import 'bootstrap/variables';
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+img {
+  @extend .img-responsive;
+}
+
+.validation-error {
+  margin-top: 2px;
+  color: $brand-danger;
+  font-size: $font-size-small;
+}
 CSS
