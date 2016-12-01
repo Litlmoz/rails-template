@@ -1,3 +1,4 @@
+##### Add default partials
 file "app/views/application/_flash.html.erb", <<-CODE
 <% flash.each do |type, msg| %>
   <div class="alert alert-<%= bootstrap_type(type) %> alert-dismissable" role="alert">

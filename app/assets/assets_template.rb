@@ -1,3 +1,4 @@
+##### Add Bootsrap and jQuery2 JavaScript stylesheets
 remove_file "app/assets/javascripts/application.js"
 
 file "app/assets/javascripts/application.js", <<-JS
@@ -8,6 +9,7 @@ file "app/assets/javascripts/application.js", <<-JS
 //= require_tree .
 JS
 
+##### Add Bootsrap CSS stylesheets
 remove_file "app/assets/stylesheets/application.css"
 
 file "app/assets/stylesheets/application.scss", <<-CSS
@@ -17,6 +19,7 @@ file "app/assets/stylesheets/application.scss", <<-CSS
   'main';
 CSS
 
+##### Add Bootsrap Variables and create custom CSS stylesheet
 file "app/assets/stylesheets/main.scss.erb", <<-CSS
 @import 'bootstrap/variables';
 CSS

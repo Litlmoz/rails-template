@@ -10,7 +10,7 @@ def apply_template!
   template "README.md.tt", :force => true # replace default README
   template "Gemfile.tt", :force => true # define default gems
 
-  apply "app/assets/assets_template.rb" # import Bootstrap js and css
+  apply "app/assets/assets_template.rb" # import Bootstrap and jQuery2
   apply "app/helpers/helper_templates.rb" # default helper methods
   apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
 

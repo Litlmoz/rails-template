@@ -1,3 +1,4 @@
+##### Set defaults for generated Scaffolding, and log outputs
 application do <<-RUBY
 
     # Sets Rails to log to stdout, prints SQL queries
@@ -16,16 +17,17 @@ application do <<-RUBY
 RUBY
 end
 
-# Specify Redis port for ActionCable
+##### Specify Redis port for ActionCable
 gsub_file "config/cable.yml", /url: .*/, "url: <%= ENV['REDIS_URL'] %>"
 
-# Configure Dev Mailer
+##### Configure Dev Mailer
 mailer_regex = /config\.action_mailer\.raise_delivery_errors = false\n/
 
 comment_lines "config/environments/development.rb", mailer_regex
 
 insert_into_file "config/environments/development.rb", :after => mailer_regex do
   <<-RUBY
+
   # Ensure mailer works in dev environment.
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :letter_opener
@@ -37,10 +39,11 @@ insert_into_file "config/environments/development.rb", :after => mailer_regex do
   RUBY
 end
 
-template "app.json.tt" # Heroku review app config
 
-copy_file "example.env", ".env" # Example enviroment variables
+##### Create default enviroment variables file
+copy_file "example.env", ".env"
 
+##### Ignore .env File
 insert_into_file ".gitignore", :after => /.byebug_history\n/ do
   <<-CODE
 # Ignore Enviroment Variable doc
