@@ -7,28 +7,44 @@ def apply_template!
   assert_minimum_rails_version
   add_template_repository_to_source_path
 
-  template "README.md.tt", :force => true # replace default README
-  template "Gemfile.tt", :force => true # define default gems
+  ##### Replace default Gemfile
+  template "Gemfile.tt", :force => true
 
-  apply "app/assets/assets_template.rb" # import Bootstrap and jQuery2
-  apply "app/helpers/helper_templates.rb" # default helper methods
-  apply "app/views/layouts/application/_partials.rb" # eg. navbar & footer
+  ##### Replace default README
+  template "README.md.tt", :force => true
+  ##### Config App settings
+  apply "config/app_config_template.rb"
+  ##### Config puma server setttings
+  apply "config/puma_template.rb"
 
-  apply "config/app_config_template.rb" # configure App
-  apply "config/puma_template.rb" # config puma server setttings
+  ##### Import Bootstrap and jQuery2
+  apply "app/assets/assets_template.rb"
+  ##### Define Application Helper methods
+  template "app/helpers/application_helper.rb.tt", :force => true
+  ##### Define Serializer to handle json data into hash
+  template "app/serializers/hash_serializer.rb.tt"
 
   after_bundle do
-    generate "simple_form:install" # initialize SimpleForm
+    ##### Install SimpleForm
+    generate "simple_form:install" # initialize gem
     generate "simple_form:install --bootstrap" # initialize SimpleForm Bootstrap
 
-    generate "rspec:install" # install Rspec
+    ##### Install Rspec
+    generate "rspec:install"
+    generate "bundle binstubs rspec-core"
+
+    ##### Install Devise
+    # generate "devise:install"
+    # model_name = ask("What would you like the user model to be called? [user]")
+    # model_name = "user" if model_name.blank?
+    # generate "devise", model_name
 
     remove_dir "test" # remove unused test specs
 
-    # remove default scaffolds
-    copy_file "lib/templates/erb/scaffold/_form.html.erb", :force => true
-    copy_file "lib/templates/erb/scaffold/index.html.erb" # index#view defaults
+    ##### Add custom Application layout, _partials, and scaffold views
+    apply "app/views/views_template.rb"
 
+    ##### Customize bin/setup tasks
     copy_file "bin/setup", :force => true #overwrite setup tasks
   end
 end
