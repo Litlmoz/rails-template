@@ -8,6 +8,6 @@
 
 <%%= link_to 'Back to <%= plural_table_name.titleize %>', <%= index_helper %>_path, class:'btn btn-block btn-default' %>
 
-<%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-block btn-primary' do %>
+<%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-block btn-primary' do %>
   <span class='glyphicon glyphicon-pencil'></span>
 <%% end %>

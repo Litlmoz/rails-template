@@ -16,5 +16,7 @@ copy_file "app/views/application/_footer.html.erb"
 ##### Default _Form Scaffold
 copy_file "lib/templates/erb/scaffold/_form.html.erb", :force => true
 
-##### Default #Index View Scaffold
+##### Default #Index, #Edit, #Show Views
+copy_file "lib/templates/erb/scaffold/edit.html.erb"
 copy_file "lib/templates/erb/scaffold/index.html.erb"
+copy_file "lib/templates/erb/scaffold/show.html.erb"
