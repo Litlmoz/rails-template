@@ -1,2 +1,3 @@
 -d postgresql
+-T #Skip Test-Unit
 -m https://raw.githubusercontent.com/Litlmoz/rails-template/master/template.rb

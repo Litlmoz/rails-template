@@ -39,8 +39,6 @@ def apply_template!
     # model_name = "user" if model_name.blank?
     # generate "devise", model_name
 
-    remove_dir "test" # remove unused test specs
-
     ##### Add custom Application layout, _partials, and scaffold views
     apply "app/views/views_template.rb"
 
