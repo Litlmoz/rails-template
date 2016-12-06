@@ -34,10 +34,7 @@ def apply_template!
     generate "rspec:install"
 
     ##### Install Devise
-    # generate "devise:install"
-    # model_name = ask("What would you like the user model to be called? [user]")
-    # model_name = "user" if model_name.blank?
-    # generate "devise", model_name
+    generate "devise:install"
 
     ##### Add custom Application layout, _partials, and scaffold views
     apply "app/views/views_template.rb"

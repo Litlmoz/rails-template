@@ -9,11 +9,11 @@ application do <<-RUBY
     # Generate Rspec fixtures without view, helper specs and asset files
     config.generators do |g|
       g.test_framework :rspec, fixture: true
-      g.view_specs false
-      g.controller_specs false
-      g.helper_specs false
-      g.stylesheets false
-      g.javascripts false
+      g.view_specs false # supress view specs
+      g.controller_specs false # supress controller specs
+      g.helper_specs false # supress helper specs
+      g.stylesheets false # supress default css files
+      g.javascripts false # supress default css files
     end
 RUBY
 end
