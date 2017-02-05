@@ -22,8 +22,6 @@ def apply_template!
   apply "app/assets/assets_template.rb"
   ##### Define Application Helper methods
   template "app/helpers/application_helper.rb.tt", :force => true
-  ##### Define Serializer to handle json data into hash
-  template "app/serializers/hash_serializer.rb.tt"
 
   after_bundle do
     ##### Install SimpleForm
