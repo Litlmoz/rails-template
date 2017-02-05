@@ -42,7 +42,7 @@ img {
 }
 
 body {
-  padding-top: 30px;
+  padding-top: 50px;
 }
 
 .page-header {
