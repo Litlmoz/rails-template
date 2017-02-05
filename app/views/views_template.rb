@@ -20,3 +20,4 @@ copy_file "lib/templates/erb/scaffold/_form.html.erb", :force => true
 copy_file "lib/templates/erb/scaffold/edit.html.erb"
 copy_file "lib/templates/erb/scaffold/index.html.erb"
 copy_file "lib/templates/erb/scaffold/show.html.erb"
+copy_file "lib/templates/erb/scaffold/new.html.erb"
